@@ -16,6 +16,11 @@ repositories {
 }
 
 dependencies {
-	implementation 'org.jetbrains.kotlin:kotlin-stdlib'
+	compile 'org.jetbrains.kotlin:kotlin-stdlib'
 	testImplementation 'junit:junit:4.12'
+}
+
+jar {
+  manifest { attributes 'Main-Class': 'MainKt' }
+  from { configurations.compile.collect { it.isDirectory() ? it : zipTree(it) } }
 }
